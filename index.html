@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Notification</title>
+</head>
+
+<body>
+    <h2>Website Notification Demo</h2>
+    <button id="notifyBtn">Send Notification</button>
+
+    <script>
+        document.getElementById("notifyBtn").addEventListener("click", async () => {
+            if (!("Notification" in window)) {
+                alert("Your browser does not support notifications.");
+                return;
+            }
+
+            let permission = Notification.permission;
+
+            if (permission === "default" || permission === "denied") {
+                permission = await Notification.requestPermission();
+            }
+
+            if (permission === "granted") {
+                new Notification("Website Notification", {
+                    body: "Hello! This is a notification."
+                });
+            } else {
+                alert("Please allow notifications in your browser settings.");
+            }
+        });
+        let notification
+        let interval
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") {
+                interval = setInterval(() => {
+                    notification = new Notification("Come back", {
+                        body: "PLEASEEE",
+                        icon: "icon.jpg",
+                        tag: "Comeback"
+                    })
+                }, 2000);
+            } else {
+                notification.close()
+                clearInterval(interval)
+            }
+        }
+        )
+    </script>
+</body>
+
+</html>
