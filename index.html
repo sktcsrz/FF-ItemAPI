@@ -83,9 +83,10 @@
         }
 
         await registration.showNotification("SKTC Notification", {
-          body: "Hello! This is a notification.",
-          silent: false,
-          renotify: true
+             body: "Hello! This is a notification.",
+             tag: "sktc-test",
+             renotify: true,
+             silent: false
         });
 
         status.textContent = "Notification sent to this browser.";
