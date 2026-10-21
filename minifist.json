@@ -1,0 +1,10 @@
+
+{
+  "name": "SRZ Notification Test",
+  "short_name": "Notify Test",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#091540",
+  "theme_color": "#091540"
+}
